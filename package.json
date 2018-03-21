@@ -1,0 +1,24 @@
+{
+  "name": "map-service",
+  "version": "0.1.0",
+  "private": true,
+  "dependencies": {
+    "enzyme": "^3.3.0",
+    "jsdom": "^11.6.2",
+    "jsdom-global": "^3.0.2",
+    "react": "^16.2.0",
+    "react-beautiful-dnd": "^6.0.0",
+    "react-dom": "^16.2.0",
+    "react-scripts": "1.1.1",
+    "ymaps": "^0.1.1"
+  },
+  "devDependencies": {
+    "enzyme-adapter-react-16": "^1.1.1"
+  },
+  "scripts": {
+    "start": "react-scripts start",
+    "build": "react-scripts build",
+    "test": "react-scripts test",
+    "eject": "react-scripts eject"
+  }
+}
