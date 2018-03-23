@@ -1,21 +1,25 @@
 import React, {Component} from 'react';
+import PropTypes from 'prop-types'
 import './index.css';
 
-class InputBox extends Component {
+export default class InputBox extends Component {
+    static propTypes = {
+        handlePointSubmit: PropTypes.func.isRequired,
+    };
 
     state = {
         inputValue: ''
-    }
+    };
 
     handleInputChange = (e) => this.setState({ inputValue: e.target.value });
 
     handleFormSubmit = (e) => {
         e.preventDefault();
+        this.props.handlePointSubmit(this.state.inputValue);
         this.setState({
             inputValue: ''
-        })
-        this.props.handlePointSubmit(this.state.inputValue);
-    }
+        });
+    };
 
     render() {
         return (
@@ -34,5 +38,3 @@ class InputBox extends Component {
         );
     }
 }
-
-export default InputBox;

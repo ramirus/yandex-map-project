@@ -1,6 +1,6 @@
-import React, { Component } from 'react';
+import React, {Component} from 'react';
 import PropTypes from 'prop-types'
-import { DragDropContext, Droppable } from 'react-beautiful-dnd';
+import {DragDropContext, Droppable, Draggable} from 'react-beautiful-dnd';
 
 import Point from '../point';
 import './index.css';
@@ -10,7 +10,6 @@ const grid = 8;
 const getListStyle = isDraggingOver => ({
     background: isDraggingOver ? 'lightblue' : 'lightgrey',
     padding: grid,
-    width: 250,
 });
 
 class PointList extends Component {
@@ -44,12 +43,17 @@ class PointList extends Component {
                             style={getListStyle(snapshot.isDraggingOver)}
                         >
                             {pointList.map((item, index) => (
-                                <Point
-                                    key={index}
-                                    label={item.properties.get('balloonContent')}
-                                    index={index}
-                                    removePoint={removePoint}
-                                />
+                                <Draggable draggableId={index} index={index} key={index}>
+                                    {(provided, snapshot) => (
+                                        <Point
+                                            provided={provided}
+                                            snapshot={snapshot}
+                                            label={item.properties.get('balloonContent')}
+                                            index={index}
+                                            removePoint={removePoint}
+                                        />
+                                    )}
+                                </Draggable>
 
                             ))}
                             {provided.placeholder}
