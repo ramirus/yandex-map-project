@@ -18,7 +18,7 @@ describe("PointList", () => {
             );
         }
         return mountedScreen;
-    }
+    };
 
     beforeEach(() => {
         props = {
@@ -52,7 +52,7 @@ describe("PointList", () => {
             const point = screen().find("Point");
             expect(point.length).toBe(1);
         });
-    })
+    });
 
     describe("when `removePoint` is defined", () => {
         beforeEach(() => {

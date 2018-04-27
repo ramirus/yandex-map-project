@@ -60,7 +60,8 @@ export default class MapService {
     }
 
     updatePointsNum(placeMarks, startIndex, endIndex) {
-        for(let i = startIndex; i <= endIndex; i++) {
+        const startI = startIndex > 0 ? startIndex : 0;
+        for(let i = startI; i <= endIndex; i++) {
             placeMarks[i].properties.set('iconContent', i + 1);
         }
         this.updateRoute();

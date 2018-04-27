@@ -17,7 +17,7 @@ describe("Point", () => {
             );
         }
         return mountedScreen;
-    }
+    };
 
     beforeEach(() => {
         props = {

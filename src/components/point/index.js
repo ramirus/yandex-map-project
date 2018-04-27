@@ -1,5 +1,5 @@
-import React, {Component} from 'react';
-import PropTypes from 'prop-types'
+import React from 'react';
+import PropTypes from 'prop-types';
 
 import './index.css';
 
@@ -18,41 +18,46 @@ const getItemStyle = (isDragging, draggableStyle) => ({
     ...draggableStyle,
 });
 
-class Point extends Component {
-    static propTypes = {
-        label: PropTypes.string.isRequired,
-        index: PropTypes.number.isRequired,
-        removePoint: PropTypes.func.isRequired,
-        provided: PropTypes.object.isRequired,
-        snapshot: PropTypes.object.isRequired,
-    }
+const Point = (props) => {
+    const {
+        label,
+        index,
+        removePoint,
+        provided,
+        snapshot
+    } = props;
 
-    render() {
-        const {label, index, removePoint, provided, snapshot} = this.props;
-        return (
-            <div>
-                <div
-                    ref={provided.innerRef}
-                    {...provided.draggableProps}
-                    {...provided.dragHandleProps}
-                    style={getItemStyle(
-                        snapshot.isDragging,
-                        provided.draggableProps.style
-                    )}
-                    className="point"
-                >
-                            <span className="point-label">
-                                {label}
-                            </span>
-                    <span
-                        className="point-remove-icon"
-                        onClick={() => removePoint(index)}
-                    >x</span>
-                </div>
-                {provided.placeholder}
+    return (
+        <div>
+            <div
+                ref={provided.innerRef}
+                {...provided.draggableProps}
+                {...provided.dragHandleProps}
+                style={getItemStyle(
+                    snapshot.isDragging,
+                    provided.draggableProps.style
+                )}
+                className="point"
+            >
+                    <span className="point-label">
+                        {label}
+                    </span>
+                <span
+                    className="point-remove-icon"
+                    onClick={() => removePoint(index)}
+                >x</span>
             </div>
-        );
-    }
-}
+            {provided.placeholder}
+        </div>
+    );
+};
+
+Point.propTypes = {
+    label: PropTypes.string.isRequired,
+    index: PropTypes.number.isRequired,
+    removePoint: PropTypes.func.isRequired,
+    provided: PropTypes.object.isRequired,
+    snapshot: PropTypes.object.isRequired,
+};
 
 export default Point;

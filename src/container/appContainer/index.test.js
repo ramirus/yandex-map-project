@@ -32,35 +32,4 @@ describe("App", () => {
         const divs = appScreen().find(".app-container");
         expect(divs.length).toBeGreaterThan(0);
     });
-
-    // it("always renders a `ControlContainer`", () => {
-    //     expect(appScreen().find(InputBox).length).toBe(1);
-    // });
-    //
-    // it("always renders a `PointList`", () => {
-    //     expect(appScreen().find(PointList).length).toBe(1);
-    // });
-
-
-    // describe("when `onUnlocked` is defined", () => {
-    //     beforeEach(() => {
-    //         props.onUnlocked = jest.fn();
-    //     });
-    //
-    //     it("sets the rendered `SlideToUnlock`'s `onSlide` prop to the same value as `onUnlocked`'", () => {
-    //         const slideToUnlock = lockScreen().find(SlideToUnlock);
-    //         expect(slideToUnlock.props().onSlide).toBe(props.onUnlocked);
-    //     });
-    // });
-    //
-    // describe("when `onUnlocked` is undefined", () => {
-    //     beforeEach(() => {
-    //         props.onUnlocked = undefined;
-    //     });
-    //
-    //     it("sets the rendered `SlideToUnlock`'s `onSlide` prop to undefined'", () => {
-    //         const slideToUnlock = lockScreen().find(SlideToUnlock);
-    //         expect(slideToUnlock.props().onSlide).not.toBeDefined();
-    //     });
-    // });
 });

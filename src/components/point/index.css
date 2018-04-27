@@ -1,0 +1,16 @@
+.point {
+    position: relative;
+}
+
+.point-remove-icon {
+    position: absolute;
+    top: 0;
+    right: 0;
+    opacity: 0.5;
+    cursor: pointer;
+    padding: 0 5px;
+}
+
+.point-remove-icon:hover {
+    opacity: 1;
+}

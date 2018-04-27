@@ -19,7 +19,7 @@ describe("ControlContainer", () => {
             );
         }
         return mountedScreen;
-    }
+    };
 
     beforeEach(() => {
         props = {

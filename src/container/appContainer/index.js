@@ -19,7 +19,7 @@ class App extends Component {
                 placeMarks: placeMarks
             });
         });
-    }
+    };
 
     updatePointsNum = (placeMarks, startIndex, endIndex) => {
         if (startIndex < endIndex) {
@@ -27,7 +27,7 @@ class App extends Component {
         } else {
             this.mapService.updatePointsNum(placeMarks, endIndex, startIndex);
         }
-    }
+    };
 
     updatePoints = (index, placeMark) => {
         let placeMarks = [...this.state.placeMarks];
@@ -35,7 +35,7 @@ class App extends Component {
         this.setState({
             placeMarks
         })
-    }
+    };
 
     reorder = (list, startIndex, endIndex) => {
         let placeMarks = [...this.state.placeMarks];
@@ -55,7 +55,7 @@ class App extends Component {
             placeMarks: placeMarks
         });
         this.updatePointsNum(placeMarks, index, placeMarks.length - 1);
-    }
+    };
 
     componentDidMount() {
         this.mapService = new MapService(this.mapContainer, this.state.center, this.updatePoints);

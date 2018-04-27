@@ -1,5 +1,5 @@
-import React, {Component} from 'react';
-import PropTypes from 'prop-types'
+import React from 'react';
+import {array, func} from 'prop-types';
 import {DragDropContext, Droppable, Draggable} from 'react-beautiful-dnd';
 
 import Point from '../point';
@@ -12,57 +12,56 @@ const getListStyle = isDraggingOver => ({
     padding: grid,
 });
 
-class PointList extends Component {
-    static propTypes = {
-        pointList: PropTypes.array.isRequired,
-        reorder: PropTypes.func.isRequired,
-        removePoint: PropTypes.func.isRequired,
-    };
-
-    onDragEnd = (result) => {
+const PointList = (props) => {
+    const onDragEnd = (result) => {
         // dropped outside the list
         if (!result.destination) {
             return;
         }
 
-        this.props.reorder(
-            this.props.pointList,
+        props.reorder(
+            props.pointList,
             result.source.index,
             result.destination.index
         );
-    }
+    };
 
-    render() {
-        const {pointList, removePoint} = this.props;
-        return (
-            <DragDropContext onDragEnd={this.onDragEnd}>
-                <Droppable droppableId="droppable">
-                    {(provided, snapshot) => (
-                        <div
-                            ref={provided.innerRef}
-                            style={getListStyle(snapshot.isDraggingOver)}
-                        >
-                            {pointList.map((item, index) => (
-                                <Draggable draggableId={index} index={index} key={index}>
-                                    {(provided, snapshot) => (
-                                        <Point
-                                            provided={provided}
-                                            snapshot={snapshot}
-                                            label={item.properties.get('balloonContent')}
-                                            index={index}
-                                            removePoint={removePoint}
-                                        />
-                                    )}
-                                </Draggable>
+    const {pointList, removePoint} = props;
+    return (
+        <DragDropContext onDragEnd={onDragEnd}>
+            <Droppable droppableId="droppable">
+                {(provided, snapshot) => (
+                    <div
+                        ref={provided.innerRef}
+                        style={getListStyle(snapshot.isDraggingOver)}
+                    >
+                        {pointList.map((item, index) => (
+                            <Draggable draggableId={index} index={index} key={index}>
+                                {(provided, snapshot) => (
+                                    <Point
+                                        provided={provided}
+                                        snapshot={snapshot}
+                                        label={item.properties.get('balloonContent')}
+                                        index={index}
+                                        removePoint={removePoint}
+                                    />
+                                )}
+                            </Draggable>
 
-                            ))}
-                            {provided.placeholder}
-                        </div>
-                    )}
-                </Droppable>
-            </DragDropContext>
-        );
-    }
-}
+                        ))}
+                        {provided.placeholder}
+                    </div>
+                )}
+            </Droppable>
+        </DragDropContext>
+    );
+
+};
+
+PointList.propTypes = {
+    pointList: array.isRequired,
+    reorder: func.isRequired,
+    removePoint: func.isRequired,
+};
 
 export default PointList;

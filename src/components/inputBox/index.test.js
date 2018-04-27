@@ -17,7 +17,7 @@ describe("InputBox", () => {
             );
         }
         return mountedScreen;
-    }
+    };
 
     beforeEach(() => {
         props = {

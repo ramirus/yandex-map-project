@@ -1,10 +1,11 @@
 import React, {Component} from 'react';
-import PropTypes from 'prop-types'
+import {func} from 'prop-types';
+
 import './index.css';
 
 export default class InputBox extends Component {
     static propTypes = {
-        handlePointSubmit: PropTypes.func.isRequired,
+        handlePointSubmit: func.isRequired,
     };
 
     state = {

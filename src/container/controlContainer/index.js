@@ -24,6 +24,6 @@ const ControlContainer = (props) => {
             />
         </div>
     );
-}
+};
 
 export default ControlContainer;
